@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
 import MainContext from "../../context/MainContext"
 import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
@@ -57,7 +56,7 @@ const Cart = () => {
             name: item.name,
             rating: item.rating,
         }
-        const { cost, id, imageUrl, name, rating, quantity } = newItem
+        const { cost, id, imageUrl, name, rating } = newItem
 
         const onClickAddToCart = () => {
             //console.log('Add cart Button Clicked', id)
