@@ -131,7 +131,7 @@ const Home = () => {
                         happy...
                     </p>
 
-                    <div>
+                    <div className="sort-container">
                         <div className="popular-sort-container">
                             <img
                                 src="https://res.cloudinary.com/dokbp23jt/image/upload/v1770654963/sort_eosmmy.png"

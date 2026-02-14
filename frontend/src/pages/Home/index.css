@@ -65,11 +65,19 @@ div {
     height: 80vh;
 }
 
+.sort-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .ul-list-items {
+
     margin: 0px;
     padding: 0px;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .li-item {
