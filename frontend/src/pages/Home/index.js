@@ -25,7 +25,7 @@ const Home = () => {
         const url = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=${limit}&sort_by_rating=${sortValue}`
 
         const jwtToken = Cookies.get('jwt_token')
-        console.log(jwtToken)
+        //console.log(jwtToken)
         const options = {
             method: 'GET',
 
@@ -38,7 +38,7 @@ const Home = () => {
         const data = await response.json()
         // console.log(data)
 
-        const newData = []
+        //const newData = []
         const restaurantsData = data.restaurants
 
         const newDataCheck = restaurantsData.map(item => ({
@@ -67,7 +67,8 @@ const Home = () => {
 
     useEffect(() => {
         fetchData()
-    }, [sortValue, offset])
+    }, [offset, sortValue])
+
 
     const onClickLeftArrow = () => {
         if (offset >= 10) {

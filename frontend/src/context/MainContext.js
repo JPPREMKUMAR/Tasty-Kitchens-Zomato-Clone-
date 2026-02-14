@@ -74,7 +74,7 @@ export const MainContextProvider = (props) => {
             quantity: quantity + 1, id, cost, imageUrl, name, rating
         }
         //console.log(updatedItem)
-        const filterList = cartList.filter((val) => val.id !== newItem.id)
+        //const filterList = cartList.filter((val) => val.id !== newItem.id)
         //console.log(filterList)
         // const updateCartList = [...filterList, updatedItem]
 
