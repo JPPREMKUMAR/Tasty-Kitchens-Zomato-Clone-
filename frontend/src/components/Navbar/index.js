@@ -6,14 +6,15 @@ import './index.css'
 
 const Navbar = () => {
     const [isMenu, setIsMenu] = useState(false)
-    const { navigate } = useContext(MainContext)
+    const { navigate, jwtToken, setJwtToken } = useContext(MainContext)
     const onClickMenu = () => {
         setIsMenu(!isMenu)
     }
 
     const onClickLogout = () => {
-        navigate("/login")
+        setJwtToken(undefined)
         Cookies.remove("jwt_token")
+        navigate("/login")
 
     }
 
@@ -23,7 +24,15 @@ const Navbar = () => {
             return navigate("/login")
         }
 
-    }, [])
+    }, [navigate])
+
+    useEffect(() => {
+        const jwtToken = Cookies.get("jwt_token")
+        if (jwtToken === undefined) {
+            return navigate("/login")
+        }
+
+    }, [jwtToken, navigate])
 
 
     return (

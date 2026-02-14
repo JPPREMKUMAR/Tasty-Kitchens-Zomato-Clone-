@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
-
+import Cookies from "js-cookie"
 const MainContext = React.createContext({ sortByOptions: [] })
 
 
@@ -28,6 +28,8 @@ export const MainContextProvider = (props) => {
     const [cartList, setCartList] = useState([])
 
     const [totalCartPrice, setTotalCartPrice] = useState(0)
+    const [jwtToken, setJwtToken] = useState(undefined)
+
 
     const newCartItem = (item) => {
         //console.log(item)
@@ -38,6 +40,8 @@ export const MainContextProvider = (props) => {
         const newList = JSON.parse(localStorage.getItem("cartData")) || []
         // console.log(newList, "local Storage list")
         setCartList(newList)
+        const token = Cookies.get("jwt_token")
+        setJwtToken(token)
 
     }, [])
 
@@ -100,7 +104,7 @@ export const MainContextProvider = (props) => {
                 quantity: quantity - 1, id, cost, imageUrl, name, rating
             }
             //console.log(updatedItem)
-            const filterList = cartList.filter((val) => val.id !== newItem.id)
+            //const filterList = cartList.filter((val) => val.id !== newItem.id)
             //console.log(filterList)
             // const updateCartList = [...filterList, updatedItem]
             //console.log(updateCartList)
@@ -134,7 +138,9 @@ export const MainContextProvider = (props) => {
             newCartItem,
             onIncrementQuantity,
             onDecrementQunatity,
-            totalCartPrice
+            totalCartPrice,
+            jwtToken,
+            setJwtToken
         }}>
 
             {props.children}
