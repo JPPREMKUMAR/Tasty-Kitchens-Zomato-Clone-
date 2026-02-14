@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useCallback } from 'react'
 import { useLocation } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { TailSpin } from 'react-loader-spinner'
@@ -20,7 +20,7 @@ const Restaurant = props => {
 
     const [restaurantPresentItem, setRestaurantPresentItem] = useState({})
 
-    const fetchRestaurantData = async () => {
+    const fetchRestaurantData = useCallback(async () => {
         const jwtToken = Cookies.get('jwt_token')
         const url = `https://apis.ccbp.in/restaurants-list/${restrauntId}`
         const options = {
@@ -50,11 +50,11 @@ const Restaurant = props => {
         setRestaurantPresentItem(updatedData)
 
         setIsLoader(false)
-    }
+    }, [restrauntId])
 
     useEffect(() => {
         fetchRestaurantData()
-    }, [])
+    }, [fetchRestaurantData])
 
     const onLoadingRender = () => {
         return (
