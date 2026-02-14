@@ -8,7 +8,13 @@ import './index.css'
 const Cart = () => {
 
 
-    const { cartList, newCartItem, totalCartPrice, onIncrementQuantity, onDecrementQunatity, navigate } = useContext(MainContext)
+    const { cartList,
+        newCartItem,
+        onIncrementQuantity,
+        onDecrementQunatity,
+        navigate,
+        totalCartPrice,
+        clearCartList } = useContext(MainContext)
 
 
     //console.log(cartList)
@@ -29,13 +35,13 @@ const Cart = () => {
                             alt="cart"
                         />
                     </div>
-                    <h1 className="empty-heading">No Orders Yet!</h1>
+                    <h1 className="empty-heading">No Cart Items Yet!</h1>
                     <p className="empty-title">
                         Your cart is empty. Add something from the menu.
                     </p>
                     <div>
-                        <button className="empty-button" type="button">
-                            Order
+                        <button className="empty-button" type="button" onClick={() => navigate("/")}>
+                            Go To Home Page
                         </button>
                     </div>
                 </div>
@@ -157,27 +163,44 @@ const Cart = () => {
                 </ul>
 
 
+                <div className="coupons-container">
+
+                    <input type="text" placeholder="Enter Code" className="coupon-input" />
+                    <button type="button" className="coupon-button" >Apply</button>
+
+                </div>
 
                 <div className="order-detail-container">
-                    <hr className="hr-line-cart" />
 
-                    <div className="cart-price-details-container">
-                        <div className="cart-order-price-container">
-
-                            <h1 className="cart-price-text">Order Total :  </h1>
-                            <h1 className="cart-price-text">₹{totalCartPrice}.00</h1>
-                        </div>
-                        <div className="cart-order-button-container">
-                            <button type="button" className="place-order-button" onClick={() => navigate("/success")}>
-                                Place Order
-                            </button>
-
-
-
-                        </div>
-
-
+                    <div className="cart-order-price-container">
+                        <h1 className="cart-price-text">Subtotal :  </h1>
+                        <h1 className="cart-price-text">₹ {totalCartPrice}.00</h1>
                     </div>
+
+
+                    <div className="cart-order-price-container">
+                        <p className="cart-price-text-delv">Delivery Fee :  </p>
+                        <h1 className="cart-price-text">₹ 40.00</h1>
+                    </div>
+                    <hr className="hr-cart" />
+
+                    <div className="cart-order-price-container">
+                        <h1 className="cart-price-text">Total :  </h1>
+                        <h1 className="cart-price-text-total">₹ {totalCartPrice + 40}</h1>
+                    </div>
+                    <hr className="hr-cart" />
+                    <div className="cart-order-price-container">
+                        <button type="button" className="cart-remove-button" onClick={clearCartList}>Clear Cart</button>
+                    </div>
+
+                    <div className="cart-order-button-container">
+                        <button type="button" className="place-order-button" onClick={() => navigate("/payment")}>
+                            Add Payment Method
+                        </button>
+                    </div>
+
+
+
 
                 </div>
 

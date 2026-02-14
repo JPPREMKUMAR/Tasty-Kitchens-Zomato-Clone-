@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Restaurant from "./pages/Restaurant"
 import Cart from "./pages/Cart"
 import Success from "./pages/Success"
+import Payment from "./pages/Payment"
 import './App.css'
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
           <Route exact path="/restaurant/:id" element={<Restaurant />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/success" element={<Success />} />
+          <Route exact path="/payment" element={<Payment />} />
 
         </Routes>
       </>

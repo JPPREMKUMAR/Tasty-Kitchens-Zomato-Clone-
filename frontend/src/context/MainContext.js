@@ -128,6 +128,31 @@ export const MainContextProvider = (props) => {
     }
 
 
+    const removeCartItem = (deleteItem) => {
+
+        let finalUpdatedList = []
+
+        for (let item of cartList) {
+            if (deleteItem.id !== item.id) {
+                finalUpdatedList = [...finalUpdatedList, item]
+            }
+        }
+
+
+
+
+        localStorage.setItem("cartData", JSON.stringify(finalUpdatedList))
+        setCartList(finalUpdatedList)
+
+    }
+
+
+    const clearCartList = () => {
+        localStorage.setItem("cartData", JSON.stringify([]))
+        navigate("/")
+
+    }
+
     return (
 
         <MainContext.Provider value={{
@@ -140,7 +165,7 @@ export const MainContextProvider = (props) => {
             onDecrementQunatity,
             totalCartPrice,
             jwtToken,
-            setJwtToken
+            setJwtToken, removeCartItem, clearCartList
         }}>
 
             {props.children}
