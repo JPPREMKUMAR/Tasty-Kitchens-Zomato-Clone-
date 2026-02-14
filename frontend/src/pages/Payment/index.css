@@ -5,6 +5,7 @@
 
 .order-summary-container {
     padding: 10px;
+    display: none;
 }
 
 .order-summary-heading {
