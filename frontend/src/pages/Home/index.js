@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Navbar from '../../components/Navbar'
@@ -21,7 +21,7 @@ const Home = () => {
 
     const limit = 9
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         const url = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=${limit}&sort_by_rating=${sortValue}`
 
         const jwtToken = Cookies.get('jwt_token')
@@ -59,15 +59,12 @@ const Home = () => {
         setRestaurantsList(newDataCheck)
         setTotal(data.total)
         setIsLoader(false)
-    }
-
-    useEffect(() => {
-        fetchData()
-    }, [])
-
-    useEffect(() => {
-        fetchData()
     }, [offset, sortValue])
+
+    useEffect(() => {
+        fetchData()
+    }, [fetchData])
+
 
 
     const onClickLeftArrow = () => {
