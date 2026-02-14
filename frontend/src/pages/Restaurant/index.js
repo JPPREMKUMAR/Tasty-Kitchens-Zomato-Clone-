@@ -95,11 +95,11 @@ const Restaurant = props => {
             cartItemPresent = isItem[0]
         }
         return (
-            <div className="li-item res-item">
-                <div className="li-item-part-1">
-                    <img src={imageUrl} alt={name} className="li-item-image" />
+            <div className="li-item-res res-item">
+                <div className="li-item-part-1-res">
+                    <img src={imageUrl} alt={name} className="li-item-image-res" />
                 </div>
-                <div className="li-item-part-2">
+                <div className="li-item-part-2-res">
                     <h1 className="li-item-heading-new">{name}</h1>
                     <p className="li-item-paragraph-new">₹{cost}.00</p>
                     <div className="ratings-star-con">
@@ -107,9 +107,9 @@ const Restaurant = props => {
                             src="https://res.cloudinary.com/dokbp23jt/image/upload/v1770660182/7_Rating_p98sxm.png"
                             alt="start"
                         />
-                        <p>{rating}</p>
+                        <span>{rating}</span>
                     </div>
-                    <div>
+                    <div className="btn-container">
                         {
                             cartItemPresent === undefined ?
                                 <button
@@ -195,7 +195,10 @@ const Restaurant = props => {
 
                 <ul className="restaurants-list-items">
                     {foodItems.map(item => (
-                        <li key={item.id}>{onRenderRestaurantItem(item)}</li>
+                        <li key={item.id}>
+                            {onRenderRestaurantItem(item)}
+
+                        </li>
                     ))}
                 </ul>
             </div>

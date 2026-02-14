@@ -115,7 +115,7 @@ const Home = () => {
                             />
                         </div>
                         <h1 className="rating-score">{rating}</h1>
-                        <p className="ratings-count">({totalReviews} ratings)</p>
+                        <p className="ratings-count-h">({totalReviews} ratings)</p>
                     </div>
                 </div>
             </Link>

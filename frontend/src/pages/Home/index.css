@@ -79,6 +79,7 @@ div {
     margin-top: 10px;
     margin-bottom: 10px;
     text-decoration: none;
+    height: 100px;
 }
 
 .li-item-part-1 {
@@ -92,7 +93,7 @@ div {
 
 .li-item-image {
     width: 100%;
-    height: 100px;
+    height: 100%;
     border-radius: 8px;
 }
 
@@ -100,10 +101,9 @@ div {
     color: #334155;
     font-family: DM Sans;
     font-weight: 700;
-    margin: 0px;
     font-size: 14px;
-
     letter-spacing: 0.2px;
+    margin-top: 0px;
 }
 
 .li-item-part-2-title {
@@ -124,7 +124,7 @@ li {
     display: flex;
     gap: 5px;
 
-    margin-top: 10px;
+    margin: 0px;
     margin-bottom: 10px;
 }
 
@@ -142,7 +142,7 @@ li {
     align-self: center;
 }
 
-.ratings-count {
+.ratings-count-h {
     color: #64748b;
     font-family: DM Sans;
     font-weight: 400;

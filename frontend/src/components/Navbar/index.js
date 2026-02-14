@@ -1,13 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import Cookies from "js-cookie"
+import MainContext from "../../context/MainContext"
 import './index.css'
 
 const Navbar = () => {
     const [isMenu, setIsMenu] = useState(false)
-
+    const { navigate } = useContext(MainContext)
     const onClickMenu = () => {
         setIsMenu(!isMenu)
     }
+
+    const onClickLogout = () => {
+        navigate("/login")
+        Cookies.remove("jwt_token")
+
+    }
+
+    useEffect(() => {
+        const jwtToken = Cookies.get("jwt_token")
+        if (jwtToken === undefined) {
+            return navigate("/login")
+        }
+
+    }, [])
+
+
     return (
         <div>
             <div className="navbar-card">
@@ -45,7 +63,7 @@ const Navbar = () => {
                                 Cart
                             </Link>
                         </div>
-                        <button type="button" className="navbar-logout-button">
+                        <button type="button" className="navbar-logout-button" onClick={onClickLogout}>
                             Logout
                         </button>
                     </div>
@@ -66,7 +84,7 @@ const Navbar = () => {
                                     Cart
                                 </Link>
                             </div>
-                            <button type="button" className="navbar-logout-button">
+                            <button type="button" className="navbar-logout-button" onClick={onClickLogout}>
                                 Logout
                             </button>
                         </div>

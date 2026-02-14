@@ -27,8 +27,10 @@ export const MainContextProvider = (props) => {
 
     const [cartList, setCartList] = useState([])
 
+    const [totalCartPrice, setTotalCartPrice] = useState(0)
+
     const newCartItem = (item) => {
-        console.log(item)
+        //console.log(item)
         setCartList([...cartList, item])
     }
 
@@ -40,10 +42,25 @@ export const MainContextProvider = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log("cart list updated")
+        //console.log("cart list updated")
+        //console.log(cartList)
         if (cartList.length > 0) {
-            return localStorage.setItem("cartData", JSON.stringify(cartList))
+            localStorage.setItem("cartData", JSON.stringify(cartList))
         }
+        let sumTotalPrice = 0
+        for (let item of cartList) {
+
+            const { quantity, cost } = item
+            //console.log(quantity, cost)
+            const price = quantity * cost
+            //console.log(price)
+            sumTotalPrice += price
+
+        }
+        //console.log("Total Price ", sumTotalPrice)
+        setTotalCartPrice(sumTotalPrice)
+
+
 
 
     }, [cartList])
@@ -59,10 +76,21 @@ export const MainContextProvider = (props) => {
         //console.log(updatedItem)
         const filterList = cartList.filter((val) => val.id !== newItem.id)
         //console.log(filterList)
-        const updateCartList = [...filterList, updatedItem]
-        //console.log(updateCartList)
-        localStorage.setItem("cartData", JSON.stringify(updateCartList))
-        setCartList(updateCartList)
+        // const updateCartList = [...filterList, updatedItem]
+
+        let finalUpdatedList = []
+        for (let item of cartList) {
+            if (item.id === newItem.id) {
+                finalUpdatedList = [...finalUpdatedList, updatedItem]
+            } else {
+                finalUpdatedList = [...finalUpdatedList, item]
+            }
+        }
+
+
+
+        localStorage.setItem("cartData", JSON.stringify(finalUpdatedList))
+        setCartList(finalUpdatedList)
     }
 
     const onDecrementQunatity = (newItem) => {
@@ -74,10 +102,22 @@ export const MainContextProvider = (props) => {
             //console.log(updatedItem)
             const filterList = cartList.filter((val) => val.id !== newItem.id)
             //console.log(filterList)
-            const updateCartList = [...filterList, updatedItem]
+            // const updateCartList = [...filterList, updatedItem]
             //console.log(updateCartList)
-            localStorage.setItem("cartData", JSON.stringify(updateCartList))
-            setCartList(updateCartList)
+
+            let finalUpdatedList = []
+            for (let item of cartList) {
+                if (item.id === newItem.id) {
+                    finalUpdatedList = [...finalUpdatedList, updatedItem]
+                } else {
+                    finalUpdatedList = [...finalUpdatedList, item]
+                }
+            }
+
+
+
+            localStorage.setItem("cartData", JSON.stringify(finalUpdatedList))
+            setCartList(finalUpdatedList)
         }
 
 
@@ -93,7 +133,8 @@ export const MainContextProvider = (props) => {
             cartList,
             newCartItem,
             onIncrementQuantity,
-            onDecrementQunatity
+            onDecrementQunatity,
+            totalCartPrice
         }}>
 
             {props.children}
