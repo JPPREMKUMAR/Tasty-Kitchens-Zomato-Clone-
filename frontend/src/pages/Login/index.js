@@ -11,17 +11,16 @@ const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
-    const { navigate } = useContext(MainContext)
+    const { navigate, jwtToken } = useContext(MainContext)
 
 
 
     useEffect(() => {
-        const jwtToken = Cookies.get('jwt_token')
         if (jwtToken !== undefined) {
             return navigate("/")
         }
 
-    }, [])
+    }, [navigate, jwtToken])
 
 
     const onSubmitHandler = async e => {
