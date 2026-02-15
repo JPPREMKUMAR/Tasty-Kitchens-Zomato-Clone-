@@ -1,5 +1,5 @@
 
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import MainContext from "../../context/MainContext"
 
 import Navbar from "../../components/Navbar"
@@ -14,8 +14,7 @@ const Payment = () => {
 
 
 
-    const { cartList, totalCartPrice, navigate } = useContext(MainContext)
-    const [optionValue, setOptionValue] = useState("COD")
+    const { cartList, totalCartPrice, navigate, setOptionValue, optionValue } = useContext(MainContext)
 
 
     console.log(optionValue)

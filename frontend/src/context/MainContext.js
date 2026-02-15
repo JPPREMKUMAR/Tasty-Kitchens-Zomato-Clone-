@@ -31,6 +31,9 @@ export const MainContextProvider = (props) => {
     const [jwtToken, setJwtToken] = useState(undefined)
     const [totalItems, setTotalItems] = useState(0)
 
+    const [optionValue, setOptionValue] = useState("COD")
+
+
 
     const newCartItem = (item) => {
         //console.log(item)
@@ -177,7 +180,9 @@ export const MainContextProvider = (props) => {
             setJwtToken,
             removeCartItem,
             clearCartList,
-            totalItems
+            totalItems,
+            optionValue,
+            setOptionValue
         }}>
 
             {props.children}

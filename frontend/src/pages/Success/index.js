@@ -27,7 +27,7 @@ const Success = () => {
 
                     </div>
                     <div className="success-button-container">
-                        <button type="button" className="success-button" onClick={() => navigate("/")} >Go To Home Page</button>
+                        <button type="button" className="success-button" onClick={() => navigate("/orders")} >Go To Orders</button>
 
                     </div>
 
