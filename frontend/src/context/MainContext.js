@@ -29,6 +29,7 @@ export const MainContextProvider = (props) => {
 
     const [totalCartPrice, setTotalCartPrice] = useState(0)
     const [jwtToken, setJwtToken] = useState(undefined)
+    const [totalItems, setTotalItems] = useState(0)
 
 
     const newCartItem = (item) => {
@@ -42,6 +43,7 @@ export const MainContextProvider = (props) => {
         setCartList(newList)
         const token = Cookies.get("jwt_token")
         setJwtToken(token)
+
 
     }, [])
 
@@ -65,7 +67,13 @@ export const MainContextProvider = (props) => {
         setTotalCartPrice(sumTotalPrice)
 
 
+        let countItems = 0;
+        for (let item of cartList) {
+            countItems += item.quantity
+        }
+        //console.log(countItems)
 
+        setTotalItems(countItems)
 
     }, [cartList])
 
@@ -165,7 +173,10 @@ export const MainContextProvider = (props) => {
             onDecrementQunatity,
             totalCartPrice,
             jwtToken,
-            setJwtToken, removeCartItem, clearCartList
+            setJwtToken,
+            removeCartItem,
+            clearCartList,
+            totalItems
         }}>
 
             {props.children}

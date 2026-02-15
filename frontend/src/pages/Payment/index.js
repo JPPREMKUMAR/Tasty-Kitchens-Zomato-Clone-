@@ -69,7 +69,7 @@ const Payment = () => {
                     <div>
 
                         <div className="option-container">
-                            <input type="radio" id="COD" name="payment" defaultValue={true} />
+                            <input type="radio" id="COD" name="payment" value={true} />
                             <label htmlFor="COD" className="item-text">Cash on Delivery</label>
 
                         </div>

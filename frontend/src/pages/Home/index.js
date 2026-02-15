@@ -116,6 +116,10 @@ const Home = () => {
                         <p className="ratings-count-h">({totalReviews} ratings)</p>
                     </div>
                 </div>
+
+
+
+
             </Link>
         )
     }
@@ -191,6 +195,19 @@ const Home = () => {
                             />
                         </button>
                     </div>
+                </div>
+
+                <div className="home-view-cart-container">
+
+                    <button
+                        type="button"
+                        className="add-button"
+
+                    >
+                        View Cart<br />
+                        <span>10 items</span>
+                    </button>
+
                 </div>
             </div>
         )
