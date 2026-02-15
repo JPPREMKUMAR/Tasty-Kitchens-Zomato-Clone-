@@ -208,7 +208,7 @@ hr {
     color: #ffa412;
     font-size: 14px;
     font-family: Inter;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 12px;
     border-radius: 5px;
     cursor: pointer;
@@ -216,6 +216,8 @@ hr {
     padding-right: 16px;
     padding-bottom: 8px;
     padding-left: 16px;
+    letter-spacing: 2px;
+    line-height: 16px;
 }
 
 .view-cart-text {
@@ -230,6 +232,10 @@ hr {
     font-size: 16px;
 }
 
+.count-items {
+    color: #64748b;
+    font-weight: bold;
+}
 
 @media screen and (min-width: 567px) {
     .md-sort-container {
