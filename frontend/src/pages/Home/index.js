@@ -201,7 +201,7 @@ const Home = () => {
 
                     <button
                         type="button"
-                        className="add-button"
+                        className="view-cart-button"
 
                     >
                         View Cart<br />
