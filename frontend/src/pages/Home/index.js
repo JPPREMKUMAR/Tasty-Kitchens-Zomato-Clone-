@@ -205,7 +205,7 @@ const Home = () => {
 
                     >
                         View Cart<br />
-                        <span className="count-items">10</span> items
+
                     </button>
 
                 </div>
