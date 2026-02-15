@@ -1,3 +1,4 @@
+import Navbar from "../../components/Navbar"
 import "./index.css"
 
 
@@ -6,11 +7,28 @@ import "./index.css"
 const Profile = () => {
 
 
-    return (
 
+
+    const onRenderProfile = () => {
+
+        return (
+
+
+            <>
+
+                Profile
+            </>
+
+        )
+    }
+
+
+    return (
         <>
 
-            Profile
+            <Navbar />
+            {onRenderProfile()}
+
         </>
     )
 }
