@@ -13,7 +13,7 @@ const Restaurant = props => {
     const splitPath = location.pathname.split('/')
     const restrauntId = splitPath[2]
     //console.log(restrauntId)
-    const { cartList, newCartItem, onIncrementQuantity, onDecrementQunatity } = useContext(MainContext)
+    const { cartList, newCartItem, onIncrementQuantity, onDecrementQunatity, totalItems, navigate } = useContext(MainContext)
     console.log(cartList, "cartlist restaurant")
 
     const [isLoader, setIsLoader] = useState(true)
@@ -201,6 +201,24 @@ const Restaurant = props => {
                         </li>
                     ))}
                 </ul>
+
+
+                {
+                    totalItems > 0 &&
+                    <div className="home-view-cart-container">
+
+                        <button
+                            type="button"
+                            className="view-cart-button"
+                            onClick={() => navigate("/cart")}
+
+                        >
+                            View Cart<br />
+
+                        </button>
+
+                    </div>
+                }
             </div>
         )
     }

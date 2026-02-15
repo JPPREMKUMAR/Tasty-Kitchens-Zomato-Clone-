@@ -8,7 +8,7 @@ import { TailSpin } from 'react-loader-spinner'
 import './index.css'
 
 const Home = () => {
-    const { sortByOptions } = useContext(MainContext)
+    const { sortByOptions, totalItems, navigate } = useContext(MainContext)
 
     let newSortByOptions = []
     sortByOptions.map(item => (newSortByOptions = [item, ...newSortByOptions]))
@@ -197,18 +197,24 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="home-view-cart-container">
 
-                    <button
-                        type="button"
-                        className="view-cart-button"
+                {
+                    totalItems > 0 &&
+                    <div className="home-view-cart-container">
 
-                    >
-                        View Cart<br />
+                        <button
+                            type="button"
+                            className="view-cart-button"
+                            onClick={() => navigate("/cart")}
 
-                    </button>
+                        >
+                            View Cart<br />
 
-                </div>
+                        </button>
+
+                    </div>
+                }
+
             </div>
         )
     }
