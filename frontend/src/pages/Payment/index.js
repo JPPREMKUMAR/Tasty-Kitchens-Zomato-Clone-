@@ -1,5 +1,5 @@
 
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import MainContext from "../../context/MainContext"
 
 import Navbar from "../../components/Navbar"
@@ -8,14 +8,17 @@ import "./index.css"
 
 
 
+
+
 const Payment = () => {
 
 
 
     const { cartList, totalCartPrice, navigate } = useContext(MainContext)
-    // console.log(cartList)
+    const [optionValue, setOptionValue] = useState("COD")
 
 
+    console.log(optionValue)
     const onRenderPayment = () => {
 
         return (
@@ -69,14 +72,26 @@ const Payment = () => {
                     <div>
 
                         <div className="option-container">
-                            <input type="radio" id="COD" name="payment" value={true} />
+                            <input type="radio" id="COD" name="payment" checked={optionValue === "COD"} onChange={() => setOptionValue("COD")} />
                             <label htmlFor="COD" className="item-text">Cash on Delivery</label>
 
                         </div>
 
                         <div className="option-container">
-                            <input type="radio" id="UPI" name="payment" />
+                            <input type="radio" id="UPI" name="payment" checked={optionValue === "UPI"} onChange={() => setOptionValue("UPI")} />
                             <label htmlFor="UPI" className="item-text">UPI</label>
+
+                        </div>
+
+                        <div className="option-container">
+                            <input type="radio" id="Rozorpay" name="payment" checked={optionValue === "Rozorpay"} onChange={() => setOptionValue("Rozorpay")} />
+                            <label htmlFor="Rozorpay" className="item-text">Rozorpay</label>
+
+                        </div>
+
+                        <div className="option-container">
+                            <input type="radio" id="CDcard" name="payment" checked={optionValue === "Credit / Debit Card"} onChange={() => setOptionValue("Credit / Debit Card")} />
+                            <label htmlFor="CDcard" className="item-text">Credit / Debit Card</label>
 
                         </div>
 
