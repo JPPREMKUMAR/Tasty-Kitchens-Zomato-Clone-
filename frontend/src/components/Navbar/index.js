@@ -68,8 +68,18 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className="navbar-link-container">
+                            <Link to="/profile" className="navbar-link">
+                                Profile
+                            </Link>
+                        </div>
+                        <div className="navbar-link-container">
                             <Link to="/cart" className="navbar-link">
                                 Cart
+                            </Link>
+                        </div>
+                        <div className="navbar-link-container">
+                            <Link to="/orders" className="navbar-link">
+                                Orders
                             </Link>
                         </div>
                         <button type="button" className="navbar-logout-button" onClick={onClickLogout}>
@@ -89,8 +99,18 @@ const Navbar = () => {
                                 </Link>
                             </div>
                             <div className="navbar-link-container">
+                                <Link to="/profile" className="navbar-link">
+                                    Profile
+                                </Link>
+                            </div>
+                            <div className="navbar-link-container">
                                 <Link to="/cart" className="navbar-link">
                                     Cart
+                                </Link>
+                            </div>
+                            <div className="navbar-link-container">
+                                <Link to="/orders" className="navbar-link">
+                                    Orders
                                 </Link>
                             </div>
                             <button type="button" className="navbar-logout-button" onClick={onClickLogout}>
